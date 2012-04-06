@@ -42,7 +42,7 @@ class TestController(OfflineStatmonController):
 		name = "TSM Database connection"
 		try:
 			tsm = datasource.TSMDatasource()
-			result = tsm.query("select node_name from nodes")
+			result = tsm.query("select node_name from nodes where node_name is not NULL")
 			status = True
 			detail = result
 		except Exception, strerror:
