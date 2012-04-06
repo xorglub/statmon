@@ -1,19 +1,19 @@
 #!/usr/bin/python
 
-settings = 'basis'
+settings = 'company'
 #settings = 'gentest'
 #settings = 'emptydb'
 
 graph_start = 30*2
 
-if settings == 'basis':
-	tsm_username = "palli"
-	tsm_password = "palli"
-	tsm_server = "eisbock"
+if settings == 'company':
+	tsm_username = "username"
+	tsm_password = "password"
+	tsm_server = "tsmserver"
 	local_username = "statmon"
 	local_password = "statmon"
 	local_db = "statmon"
-	local_host = "statmon.basis.is"
+	local_host = "statmon.company.net"
 
 if settings == 'gentest':
 	tsm_username = None
@@ -21,7 +21,7 @@ if settings == 'gentest':
 	local_username = "gentest"
 	local_password = "gentest"
 	local_db = "gentest"
-	local_host = "statmon.basis.is"
+	local_host = "statmon.company.net"
 	graph_start = 365*4
 
 if settings == 'emptydb':
@@ -30,7 +30,7 @@ if settings == 'emptydb':
 	local_username = "emptydb"
 	local_password = "emptydb"
 	local_db = "emptydb"
-	local_host = "statmon.basis.is"
+	local_host = "statmon.company.net"
 	graph_start = 365*4
 
 # Graph stuff, dont change unless you know what you are doing

@@ -19,7 +19,7 @@
 			<server>'tsmserver'</server>
 		</tsm>
 		<misc>
-			<actlogIgnoreList>[45778, 147830, 147876]</actlogIgnoreList>
+			<actlogIgnoreList></actlogIgnoreList>
 			<backupHistoryStart>20</backupHistoryStart>
 		</misc>
 	</statmon>

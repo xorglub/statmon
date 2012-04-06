@@ -176,7 +176,7 @@ class Job:
 
 class Nodes(Job):
     items = "node_name,platform_name,contact,lastacc_time,reg_time,reg_admin,nodetype,url,tcp_name,tcp_address"
-    selectQuery = 'select %s from nodes'
+    selectQuery = 'select %s from nodes where node_name is not NULL'
     insertQuery = "INSERT INTO nodes (snap_id,%s) VALUES(%s,%s) ON DUPLICATE KEY UPDATE snap_id=VALUES(snap_id),%s"
 class Domains(Job):
     items = 'domain_name,description,set_last_activated,activate_date, defmgmtclass,chg_time,chg_admin,profile'
@@ -184,7 +184,7 @@ class Domains(Job):
     insertQuery = "insert into domains (snap_id,%s) values(%s,%s) on duplicate key update snap_id=VALUES(snap_id), %s "
 class Filespaces(Job):
     items = 'node_name,filespace_id,filespace_name,filespace_type'
-    selectQuery = 'select %s from filespaces'
+    selectQuery = 'select %s from filespaces where node_name is not NULL'
     insertQuery = "insert into filespaces (snap_id,%s) values (%s,%s) on duplicate key update snap_id=VALUES(snap_id), %s"
     def process(self):
         for i in self.results:
@@ -196,7 +196,7 @@ class Storagepools(Job):
 
 class Occupancy_snapshot(Job):
     items = 'node_name,filespace_id,stgpool_name,type,num_files,physical_mb,logical_mb'
-    selectQuery = 'select %s from occupancy'
+    selectQuery = 'select %s from occupancy where node_name is not NULL'
     insertQuery = "insert into occupancy_snapshots (snap_id,%s) values (%s,%s) on duplicate key update %s"
 class Summary(Job):
     items = 'entity,activity,start_time,end_time,schedule_name,examined,affected,failed,bytes,successful'
@@ -214,14 +214,14 @@ class Volumes(Job):
             if i[0] == None: i[0] = "''"
 class Filespaces_snapshots(Job):
     items = 'node_name,filespace_id,capacity,pct_util,backup_start,backup_end,delete_occurred'
-    selectQuery = 'select %s from filespaces'
+    selectQuery = 'select %s from filespaces where node_name is not NULL'
     insertQuery = "insert into filespaces_snapshots (snap_id,%s) values (%s,%s) on duplicate key update %s"
     def process(self):
         for i in self.results:
             if i[0] == None: i[0] = "''"
 class Nodes_snapshots(Job):    
     items = 'node_name, domain_name, client_version, client_release,client_level, client_sublevel,option_set'
-    selectQuery =  'select %s from nodes'
+    selectQuery =  'select %s from nodes where node_name is not NULL'
     insertQuery = "INSERT INTO nodes_snapshots (snap_id,%s) VALUES(%s,%s) ON DUPLICATE KEY UPDATE %s"
 class Domains_snapshots(Job):    
     items = 'domain_name, num_nodes, backretention, archretention'
@@ -263,7 +263,7 @@ class Clientopts(Job):
     translationScheme = { 'force':'force_option' }
 class Associations(Job):
     items = 'node_name,domain_name,schedule_name,chg_admin,chg_time'
-    selectQuery = 'select %s from associations'
+    selectQuery = 'select %s from associations where node_name is not NULL'
     insertQuery = "INSERT INTO associations (snap_id,%s) VALUES(%s,%s) ON DUPLICATE KEY UPDATE %s"    
 class Client_schedules(Job):
     items = 'domain_name , schedule_name , description , action, options,objects,priority,startdate,starttime,duration,durunits,period,perunits,dayofweek,expiration, chg_time, chg_admin, profile,sched_style, enh_month,dayofmonth,weekofmonth'
