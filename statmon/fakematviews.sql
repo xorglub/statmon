@@ -277,11 +277,12 @@ create table actlog_count_mv as
 alter table actlog_count_mv
      change newest_message newest_message varchar( 255 );
 
-update actlog_count_mv ac, actlog a
-   set ac.newest_message = if(length(a.message)>255,concat(left(a.message,251),' ...'),a.message)
- where ac.newest_date_time = a.date_time
-   and ac.msgno = a.msgno
-   and ac.severity = a.severity;
+-- STH -- Comment: need to find better sql for this, big local actlog never finishes, breaks statmon
+-- STH update actlog_count_mv ac, actlog a
+-- STH   set ac.newest_message = if(length(a.message)>255,concat(left(a.message,251),' ...'),a.message)
+-- STH where ac.newest_date_time = a.date_time
+-- STH   and ac.msgno = a.msgno
+-- STH   and ac.severity = a.severity;
 
 -- legacy view
 drop view if exists actlog_count_view;
