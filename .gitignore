@@ -1,0 +1,7 @@
+# Ide settings and files
+**/*.iml
+**/.idea/
+**/sandbox/
+
+# No compiled pycode
+**/*.pyc
